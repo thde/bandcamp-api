@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "/"
+  },
+  "lib": ["ES2018"]
+}
