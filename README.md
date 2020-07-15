@@ -1,6 +1,6 @@
 # bandcamp-api
 
-A simple API for Bandcamp based on node.
+A simple API for Bandcamp based on [bandcamp-scraper](https://github.com/masterT/bandcamp-scraper).
 
 The API is deployed on vercel and can be used to query some basic release data:
 
