@@ -22,13 +22,12 @@ export interface ReleaseParams {
 }
 
 export async function getRelease({ artist, type, name }: ReleaseParams) {
-  const info = await toPromise<string, string[]>(
-    Bandcamp.getAlbumInfo,
-    `https://${artist}/${type}/${name}`
-  )
+  const url = `https://${artist}/${type}/${name}`
+
+  const info = await toPromise<string, string[]>(Bandcamp.getAlbumInfo, url)
   const products = await toPromise<string, string[]>(
     Bandcamp.getAlbumProducts,
-    `https://${artist}/${type}/${name}`
+    url
   )
 
   return { ...info, products: products }
