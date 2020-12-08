@@ -18,7 +18,7 @@ export function callbackHandler(
 
       response.setHeader(
         'cache-control',
-        'max-age=0, s-maxage=86400, stale-while-revalidate'
+        'max-age=60, s-maxage=86400, stale-while-revalidate'
       )
       response.status(200).json(data)
     } catch (err) {
