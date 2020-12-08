@@ -1,4 +1,5 @@
 import { NowRequest, NowResponse } from '@vercel/node'
+import * as Sentry from '@sentry/node'
 
 export function callbackHandler(
   callback: (request: NowRequest) => Promise<any>
