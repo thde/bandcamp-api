@@ -22,7 +22,7 @@ export function callbackHandler(
       )
       response.status(200).json(data)
     } catch (err) {
-      console.warn(err)
+      console.error(err)
       Sentry.captureException(err)
       response.status(500).send(err.toString())
     }
