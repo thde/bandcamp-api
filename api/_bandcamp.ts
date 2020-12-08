@@ -44,7 +44,7 @@ async function verifyArtist(artist: string) {
   const address = (await dns.lookup(artist)).address
   if (CONFIG.Bandcamp.AllowedIps.includes(address)) return
 
-  throw 'Artist domain not valid!'
+  throw new Error('Artist domain not valid!')
 }
 
 function toPromise<P, R>(
