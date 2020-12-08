@@ -32,7 +32,7 @@ export function callbackHandler(
 export function defaultChain(callback: (request: NowRequest) => Promise<any>) {
   return chain(
     cors(),
-    morgan('common'),
-    Sentry.errorMiddleware
+    morgan('common')
+    //Sentry.errorMiddleware
   )(callbackHandler(callback))
 }
