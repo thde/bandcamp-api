@@ -1,5 +1,10 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-import * as Sentry from '@sentry/node'
+
+import { chain } from '@amaurymartiny/now-middleware'
+import cors from 'cors'
+import morgan from 'morgan'
+
+import * as Sentry from './_sentry'
 
 export function callbackHandler(
   callback: (request: NowRequest) => Promise<any>
@@ -22,4 +27,12 @@ export function callbackHandler(
       response.status(500).send(err.toString())
     }
   }
+}
+
+export function defaultChain(callback: (request: NowRequest) => Promise<any>) {
+  return chain(
+    cors(),
+    morgan('common'),
+    Sentry.errorMiddleware
+  )(callbackHandler(callback))
 }
