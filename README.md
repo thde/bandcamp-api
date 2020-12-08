@@ -19,5 +19,5 @@ https://bandcamp-api.vercel.app/api/hommesdumonde.bandcamp.com/album/spirits
 ## Track
 
 ```text
-https://bandcamp-api-4usfpzkwz.vercel.app/api/hommesdumonde.bandcamp.com/track/virtue-original-mix
+https://bandcamp-api.vercel.app/api/hommesdumonde.bandcamp.com/track/virtue-original-mix
 ```
