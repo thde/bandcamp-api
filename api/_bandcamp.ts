@@ -41,8 +41,13 @@ export async function getRelease({ artist, type, name }: ReleaseParams) {
 async function verifyArtist(artist: string) {
   if (artist.endsWith('.bandcamp.com')) return
 
-  const address = (await dns.lookup(artist)).address
-  if (CONFIG.Bandcamp.AllowedIps.includes(address)) return
+  try {
+    const address = (await dns.lookup(artist)).address
+    if (CONFIG.Bandcamp.AllowedIps.includes(address)) return
+  } catch (err) {
+    console.error(err)
+    throw new Error('Artist domain not valid!')
+  }
 
   throw new Error('Artist domain not valid!')
 }
