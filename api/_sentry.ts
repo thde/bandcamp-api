@@ -11,13 +11,5 @@ Sentry.init({
   ],
 })
 
-export const errorMiddleware: (...args: any[]) => void = (err, ctx) => {
-  Sentry.withScope((scope) => {
-    scope.addEventProcessor((event) =>
-      Sentry.Handlers.parseRequest(event, ctx.request)
-    )
-    Sentry.captureException(err)
-  })
-}
-
+export const requestHandler = Sentry.Handlers.requestHandler
 export const captureException = Sentry.captureException
