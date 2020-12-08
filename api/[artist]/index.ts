@@ -1,5 +1,4 @@
 import { chain } from '@amaurymartiny/now-middleware'
-import { NowRequest, NowResponse } from '@now/node'
 
 import cors from 'cors'
 import morgan from 'morgan'
@@ -8,6 +7,7 @@ import * as Sentry from '@sentry/node'
 import { RewriteFrames } from '@sentry/integrations'
 
 import * as Bandcamp from '../_bandcamp'
+import { callbackHandler } from '../_handler'
 
 import { CONFIG } from '../_config'
 
@@ -20,23 +20,11 @@ Sentry.init({
   ],
 })
 
-async function handler(
-  request: NowRequest,
-  response: NowResponse
-): Promise<void> {
-  try {
-    const releases = await Bandcamp.getReleases(request.query.artist as string)
-
-    response.setHeader(
-      'cache-control',
-      'max-age=0, s-maxage=86400, stale-while-revalidate'
-    )
-    response.status(200).json(releases)
-  } catch (err) {
-    console.warn(err)
-    Sentry.captureException(err)
-    response.status(500).send(err.toString())
-  }
-}
-
-export default chain(cors(), morgan('common'))(handler)
+export default chain(
+  cors(),
+  morgan('common')
+)(
+  callbackHandler((request) =>
+    Bandcamp.getReleases(request.query.artist as string)
+  )
+)
