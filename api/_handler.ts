@@ -34,6 +34,7 @@ export function defaultChain(callback: (request: NowRequest) => Promise<any>) {
   return chain(
     Sentry.requestHandler(),
     cors(),
-    morgan('common')
+    morgan('common'),
+    Sentry.errorHandler()
   )(callbackHandler(callback))
 }
