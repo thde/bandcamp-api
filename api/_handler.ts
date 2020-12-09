@@ -24,6 +24,7 @@ export function callbackHandler(
     } catch (err) {
       console.error(err)
       Sentry.captureException(err)
+      await Sentry.flush(2000)
       response.status(500).send(err.toString())
     }
   }
@@ -31,8 +32,8 @@ export function callbackHandler(
 
 export function defaultChain(callback: (request: NowRequest) => Promise<any>) {
   return chain(
+    Sentry.requestHandler(),
     cors(),
-    morgan('common'),
-    Sentry.requestHandler()
+    morgan('common')
   )(callbackHandler(callback))
 }

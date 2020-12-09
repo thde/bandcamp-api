@@ -11,5 +11,6 @@ Sentry.init({
   ],
 })
 
+export const flush = Sentry.flush
 export const requestHandler = Sentry.Handlers.requestHandler
 export const captureException = Sentry.captureException
