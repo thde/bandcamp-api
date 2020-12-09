@@ -10,7 +10,7 @@ The API is deployed on vercel and can be used to query some basic release data:
 https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com
 ```
 
-## Album
+## Release
 
 ```text
 https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com/album/spirits
@@ -20,4 +20,10 @@ https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com/album/spi
 
 ```text
 https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com/track/virtue-original-mix
+```
+
+## Search
+
+```text
+https://bandcamp-api.vercel.app/api/search?query='Coeur de pirate'&page=1
 ```

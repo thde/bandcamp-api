@@ -3,7 +3,7 @@ import { promises as dns } from 'dns'
 import { CONFIG } from './_config'
 import { ParameterError } from './_errors'
 
-export async function getReleases(artist: string) {
+export async function getReleasesByArtist(artist: string) {
   await verifyArtist(artist)
 
   const urls = await toPromise<string, string[]>(
@@ -20,6 +20,15 @@ export async function getReleases(artist: string) {
   })
 }
 
+export interface SearchParams {
+  query: string
+  page: number
+}
+
+export async function search(params: SearchParams) {
+  return await toPromise<SearchParams, any>(Bandcamp.search, params)
+}
+
 export interface ReleaseParams {
   artist: string
   type: string
@@ -31,11 +40,8 @@ export async function getRelease({ artist, type, name }: ReleaseParams) {
 
   const url = `https://${artist}/${type}/${name}`
 
-  const info = await toPromise<string, string[]>(Bandcamp.getAlbumInfo, url)
-  const products = await toPromise<string, string[]>(
-    Bandcamp.getAlbumProducts,
-    url
-  )
+  const info = await toPromise<string, any>(Bandcamp.getAlbumInfo, url)
+  const products = await toPromise<string, any>(Bandcamp.getAlbumProducts, url)
 
   return { ...info, products: products }
 }
