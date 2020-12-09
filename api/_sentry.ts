@@ -4,6 +4,7 @@ import { CONFIG } from './_config'
 
 Sentry.init({
   dsn: CONFIG.Sentry.Dsn,
+  debug: true,
   integrations: [
     new RewriteFrames({
       root: (global as any).__rootdir__,
@@ -11,5 +12,7 @@ Sentry.init({
   ],
 })
 
+export const flush = Sentry.flush
+export const errorHandler = Sentry.Handlers.errorHandler
 export const requestHandler = Sentry.Handlers.requestHandler
 export const captureException = Sentry.captureException
