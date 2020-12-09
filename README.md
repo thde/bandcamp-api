@@ -4,20 +4,20 @@ A simple API for Bandcamp based on [bandcamp-scraper](https://github.com/masterT
 
 The API is deployed on vercel and can be used to query some basic release data:
 
-## Releases
+## Releases by Artist
 
 ```text
-https://bandcamp-api.vercel.app/api/hommesdumonde.bandcamp.com
+https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com
 ```
 
 ## Album
 
 ```text
-https://bandcamp-api.vercel.app/api/hommesdumonde.bandcamp.com/album/spirits
+https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com/album/spirits
 ```
 
 ## Track
 
 ```text
-https://bandcamp-api.vercel.app/api/hommesdumonde.bandcamp.com/track/virtue-original-mix
+https://bandcamp-api.vercel.app/api/artists/hommesdumonde.bandcamp.com/track/virtue-original-mix
 ```
