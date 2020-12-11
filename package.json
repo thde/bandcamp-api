@@ -20,7 +20,7 @@
     "@amaurymartiny/now-middleware": "^0.2.0",
     "@sentry/integrations": "^5.29.0",
     "@sentry/node": "^5.29.0",
-    "bandcamp-scraper": "^1.2.10",
+    "bandcamp-scraper": "^1.3.0",
     "cors": "^2.8.5",
     "morgan": "^1.10.0"
   },
