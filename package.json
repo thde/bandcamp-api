@@ -19,7 +19,7 @@
   "dependencies": {
     "@amaurymartiny/now-middleware": "^0.2.0",
     "@sentry/integrations": "^6.0.2",
-    "@sentry/node": "^6.0.2",
+    "@sentry/node": "^6.0.3",
     "bandcamp-scraper": "^1.2.10",
     "cors": "^2.8.5",
     "morgan": "^1.10.0"
