@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/thde/bandcamp-api.git"
   },
-  "author": "Demian",
+  "author": "thde",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thde/bandcamp-api/issues"
