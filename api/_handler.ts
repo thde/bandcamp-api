@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from '@vercel/node'
+import { VercelRequest, VercelResponse } from '@vercel/node'
 
 import { chain } from '@amaurym/now-middleware'
 import cors from 'cors'
@@ -8,11 +8,11 @@ import { ParameterError } from './_errors'
 import * as Sentry from './_sentry'
 
 export function callbackHandler(
-  callback: (request: NowRequest) => Promise<any>
-): (request: NowRequest, response: NowResponse) => Promise<void> {
+  callback: (request: VercelRequest) => Promise<any>
+): (request: VercelRequest, response: VercelResponse) => Promise<void> {
   return async function handler(
-    request: NowRequest,
-    response: NowResponse
+    request: VercelRequest,
+    response: VercelResponse
   ): Promise<void> {
     try {
       const data = await callback(request)
@@ -33,7 +33,9 @@ export function callbackHandler(
   }
 }
 
-export function defaultChain(callback: (request: NowRequest) => Promise<any>) {
+export function defaultChain(
+  callback: (request: VercelRequest) => Promise<any>
+) {
   return chain(
     Sentry.requestHandler(),
     cors(),

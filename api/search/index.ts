@@ -1,9 +1,9 @@
-import { NowRequest, NowRequestQuery } from '@vercel/node'
+import { VercelRequest, VercelRequestQuery } from '@vercel/node'
 
 import * as Bandcamp from '../_bandcamp'
 import { defaultChain } from '../_handler'
 
-function toParams({ query, page }: NowRequestQuery) {
+function toParams({ query, page }: VercelRequestQuery) {
   const params: Bandcamp.SearchParams = {
     query: query as string,
     page: parseInt(page as string),
@@ -11,7 +11,7 @@ function toParams({ query, page }: NowRequestQuery) {
   return params
 }
 
-const response = (request: NowRequest) => {
+const response = (request: VercelRequest) => {
   return Bandcamp.search(toParams(request.query))
 }
 
