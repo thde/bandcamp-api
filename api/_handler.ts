@@ -21,7 +21,7 @@ export function callbackHandler(
         'cache-control',
         'max-age=60, s-maxage=86400, stale-while-revalidate'
       )
-      response.status(200).json(data)
+      response.status(200).json(clean(data))
     } catch (err) {
       console.error(err)
       if (!(err instanceof ParameterError)) {
@@ -42,4 +42,11 @@ export function defaultChain(
     morgan('common'),
     Sentry.errorHandler()
   )(callbackHandler(callback))
+}
+
+function clean(obj: any) {
+  return Object.entries(obj).reduce(
+    (a, [k, v]) => (v == null ? a : ((a[k] = v), a)),
+    {}
+  )
 }
