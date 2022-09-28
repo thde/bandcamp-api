@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 
-import { chain } from '@amaurymartiny/now-middleware'
+import { chain } from '@amaurym/now-middleware'
 import cors from 'cors'
 import morgan from 'morgan'
 import { ParameterError } from './_errors'
