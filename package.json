@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
-    "@types/morgan": "^1.9.2",
+    "@types/morgan": "^1.9.9",
     "@vercel/node": "^1.9.1"
   }
 }
